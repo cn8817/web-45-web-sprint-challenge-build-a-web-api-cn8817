@@ -20,14 +20,15 @@ async function validateActionId(req, res, next) {
 }
 
 function validateAction(req, res, next) {
-    const { description, notes } = req.body
-    if(!description || !description.trim() || !notes || !notes.trim()) {
+    const { description, notes, project_id } = req.body
+    if(!description || !notes ||  !project_id  ) {
         res.status(400).json({
             message: 'missing description or notes'
         })
     } else{
-        req.description = description.trim()
-        req.notes = notes.trim()
+        req.description = description
+        req.notes = notes
+        req.project_id = project_id
         next()
     }
 }
