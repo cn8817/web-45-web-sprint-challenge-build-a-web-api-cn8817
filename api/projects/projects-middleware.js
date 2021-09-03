@@ -22,7 +22,7 @@ async function validateProjectById(req, res, next) {
 
 function validateProject(req, res, next) {
     const { name, description, completed} = req.body
-    if(!name || !description || completed === false) {
+    if(!name || !description || !completed) {
         res.status(400).json({
             message: 'missing either name or description'
         })
