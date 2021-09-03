@@ -25,7 +25,7 @@ projectsRouter.post('/', validateProject, (req, res, next) => {
         .catch(next)
 })
 
-projectsRouter.put('/:id', validateProjectById, validateProject, (req, res, next) => {
+projectsRouter.put('/:id', validateProject, validateProjectById, (req, res, next) => {
     Project.update(req.params.id, req.body)
         .then(() => {
             return Project.get(req.params.id)
